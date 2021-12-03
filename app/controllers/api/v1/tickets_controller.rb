@@ -1,4 +1,6 @@
 class Api::V1::TicketsController < ApplicationController
+  protect_from_forgery
+
   def create
     @ticket = Ticket.new(ticket_params)
     if @ticket.save

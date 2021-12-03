@@ -25,7 +25,7 @@ const Board = (props) => {
       <BoardColumns>
         { columns.map((column) => {
             return (
-              <Column key={uniqid('column-')}>
+              <Column key={uniqid('column-')} columnID={column.id}>
                 { column.tickets.map((ticket) => {
                     return <Ticket key={uniqid('ticket-')} desc={ticket.title} />
                 })}
@@ -35,40 +35,6 @@ const Board = (props) => {
       </BoardColumns>
     </div>
   )
-
-  /*
-  return (
-    <div id="board">
-      <div className="some-stuff"></div>
-      <BoardColumns>
-        <Column id="1">
-          <Ticket desc="Swap me around" />
-          <Ticket desc="Swap him around" />
-          <Ticket desc="Swap her around" />
-          <Ticket desc="Swap them around" />
-          <Ticket desc="Swap all around" />
-          <Ticket desc="Swap zhem around" />
-        </Column>
-        <Column id="2">
-          <Ticket desc="Swap me around 2" />
-          <Ticket desc="Swap him around 2" />
-          <Ticket desc="Swap her around 2" />
-          <Ticket desc="Swap them around 2" />
-          <Ticket desc="Swap all around 2" />
-          <Ticket desc="Swap zhem around 2" />
-        </Column>
-        <Column id="3">
-          <Ticket desc="Swap me around 3" />
-          <Ticket desc="Swap him around 3" />
-          <Ticket desc="Swap her around 3" />
-          <Ticket desc="Swap them around 3" />
-          <Ticket desc="Swap all around 3" />
-          <Ticket desc="Swap zhem around 3" />
-        </Column>
-      </BoardColumns>
-    </div>
-  );
-  */
 };
 
 export default Board;

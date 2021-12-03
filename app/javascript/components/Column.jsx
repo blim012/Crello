@@ -1,12 +1,28 @@
 import React from "react";
+import axios from "axios";
 
 const Column = (props) => {
+  const ticketButtonHandler = (e) => {
+    let title = prompt('Enter Title');
+    let columnTicketsLength = e.nativeEvent.originalTarget.parentElement.children.length;
+    axios.post('/api/v1/tickets', {
+      column_id: props.columnID,
+      order: columnTicketsLength,
+      title: title,
+      description: 'test'
+    })
+    .then((response) => {
+      console.log(response);
+    })
+  };
+
   return (
     <div className='column'>
       <div className="handle"></div>
       <div className="column-tickets">
         { props.children }
       </div>
+      <button className="add-ticket-button" onClick={ticketButtonHandler}>+ Ticket</button>
     </div>
   );
 };
