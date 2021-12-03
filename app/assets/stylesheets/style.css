@@ -1,0 +1,22 @@
+.board-columns {
+  display: flex;
+}
+
+.ticket {
+  width: 100px;
+  height: 50px;
+  text-align: center;
+  background-color: red;
+  border: 3px solid black;
+}
+
+.handle {
+  width: 100px;
+  height: 50px;
+  background-color: aqua;
+  border: 3px solid black;
+}
+
+.column {
+  margin: 0 1rem;
+}

@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  
+  namespace :api do
+    namespace :v1 do
+      resources :boards, only: [ :create, :show ]
+      resources :columns, only: [ :create ]
+      resources :tickets, only: [ :create ]
+    end
+  end
+
+  devise_for :users
+  root 'boards#index';
 end

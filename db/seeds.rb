@@ -5,3 +5,27 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+User.create(email: "a@a.com", password: "aaaaaa", password_confirmation: "aaaaaa")
+User.create(email: "b@b.com", password: "bbbbbb", password_confirmation: "bbbbbb")
+User.create(email: "c@c.com", password: "cccccc", password_confirmation: "cccccc")
+
+Board.create(title: 'board1', user_id: 1)
+Board.create(title: 'board11', user_id: 1)
+Board.create(title: 'board2', user_id: 2)
+
+BoardUser.create(user_id: 2, board_id: 1)
+
+Column.create(title: 'column1', board_id: 1, order: 1)
+Column.create(title: 'column2', board_id: 1, order: 2)
+Column.create(title: 'column3', board_id: 1, order: 3)
+
+Ticket.create(title: 'ticket11', description: 'desc1', column_id: 1, order: 1)
+Ticket.create(title: 'ticket12', description: 'desc1', column_id: 1, order: 2)
+Ticket.create(title: 'ticket13', description: 'desc1', column_id: 1, order: 3)
+Ticket.create(title: 'ticket21', description: 'desc1', column_id: 2, order: 1)
+Ticket.create(title: 'ticket22', description: 'desc1', column_id: 2, order: 2)
+Ticket.create(title: 'ticket23', description: 'desc1', column_id: 2, order: 3)
+Ticket.create(title: 'ticket31', description: 'desc1', column_id: 3, order: 1)
+Ticket.create(title: 'ticket32', description: 'desc1', column_id: 3, order: 2)
+Ticket.create(title: 'ticket33', description: 'desc1', column_id: 3, order: 3)
