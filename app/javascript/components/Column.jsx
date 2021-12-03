@@ -4,7 +4,9 @@ import axios from "axios";
 const Column = (props) => {
   const ticketButtonHandler = (e) => {
     let title = prompt('Enter Title');
-    let columnTicketsLength = e.nativeEvent.originalTarget.parentElement.children.length;
+    let column = e.nativeEvent.originalTarget.parentElement;
+    let columnTicketsLength = column.querySelector('.column-tickets').children.length;
+    console.log(columnTicketsLength);
     axios.post('/api/v1/tickets', {
       column_id: props.columnID,
       order: columnTicketsLength,

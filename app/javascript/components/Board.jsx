@@ -22,7 +22,7 @@ const Board = (props) => {
 
   return (
     <div id="board">
-      <BoardColumns>
+      <BoardColumns boardID={boardID}>
         { columns.map((column) => {
             return (
               <Column key={uniqid('column-')} columnID={column.id}>

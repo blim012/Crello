@@ -1,3 +1,11 @@
+#board {
+  display: flex;
+}
+
+.board-columns-container {
+  display: flex;
+}
+
 .board-columns {
   display: flex;
 }

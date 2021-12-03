@@ -1,4 +1,6 @@
 class Api::V1::ColumnsController < ApplicationController
+  protect_from_forgery
+  
   def create
     @column = Column.new(column_params)
     if @column.save
