@@ -5,6 +5,7 @@ import uniqid from "uniqid";
 import Column from "./Column";
 import Ticket from "./Ticket";
 import BoardColumns from "./BoardColumns";
+import consumer from "../channels/consumer";
 
 const Board = (props) => {
   const [columns, setColumns] = useState([]);
@@ -19,6 +20,27 @@ const Board = (props) => {
       setBoardID(data[0].id);
     });
   }, []);
+
+  useEffect(() => {
+    if(boardID >= 0) {
+      consumer.subscriptions.create({ channel: 'BoardsChannel', board_id: `${boardID}`}, {
+        connected() {
+          // Called when the subscription is ready for use on the server
+          console.log(`Connect to board ${boardID}`);
+        },
+      
+        disconnected() {
+          // Called when the subscription has been terminated by the server
+          console.log(`Disconnected from board ${boardID}`);
+        },
+      
+        received(data) {
+          // Called when there's incoming data on the websocket for this channel
+          setColumns(data.board.ordered_columns);
+        }
+      });
+    }
+  }, [boardID]);
 
   return (
     <div id="board">

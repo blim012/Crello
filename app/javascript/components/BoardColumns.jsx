@@ -28,8 +28,7 @@ const BoardColumns = (props) => {
 
   document.addEventListener('keydown', (e) => {
     if(e.code === 'Escape') {
-      ticketDrake.cancel(true);
-      columnDrake.cancel(true);
+      cancelDrags();
     } 
   });
 
@@ -37,6 +36,10 @@ const BoardColumns = (props) => {
     ticketDrake.containers = [...document.querySelectorAll('.column-tickets')] 
     columnDrake.containers = [document.querySelector('.board-columns')]
   }, [props.children]);
+
+  useEffect(() => {
+    cancelDrags();
+  })
 
   const columnButtonHandler = (e) => {
     let title = prompt('Enter Column Title');
@@ -52,6 +55,11 @@ const BoardColumns = (props) => {
       console.log(response);
     })
   };
+
+  const cancelDrags = () => {
+    ticketDrake.cancel(true);
+    columnDrake.cancel(true);
+  }
 
   return (
     <div className="board-columns-container">
