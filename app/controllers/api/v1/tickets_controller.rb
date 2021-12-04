@@ -22,13 +22,15 @@ class Api::V1::TicketsController < ApplicationController
     # dest_ticket_idx
     # board_id
 
+    dest_col = Column.find_by(board_id: params[:board_id], order: params[:dest_col_idx])
     if(params[:src_col_idx] == params[:dest_col_idx])
-      tickets = Column.find_by(board_id: params[:board_id], order: params[:src_col_idx]).tickets
-      update_ticket_order_same_col(tickets, params[:src_ticket_idx], params[:dest_ticket_idx])
-      helpers.broadcast_update(Board.find(params[:board_id]))
+      dest_tickets = dest_col.tickets
+      update_ticket_order_same_col(dest_tickets, params[:src_ticket_idx], params[:dest_ticket_idx])
     else
-      # update_diff_col_order
+      src_col = Column.find_by(board_id: params[:board_id], order: params[:src_col_idx])
+      update_ticket_order_diff_col(src_col, dest_col, params[:src_ticket_idx], params[:dest_ticket_idx])
     end
+    helpers.broadcast_update(Board.find(params[:board_id]))
   end
 
   private
@@ -42,6 +44,7 @@ class Api::V1::TicketsController < ApplicationController
     Board.find_by(id: column.board_id)
   end
 
+  # Generalizable
   def update_ticket_order_same_col(tickets, from_idx, to_idx)
     moved_ticket = tickets.find_by(order: from_idx)
     if from_idx < to_idx
@@ -52,13 +55,13 @@ class Api::V1::TicketsController < ApplicationController
     moved_ticket.update(order: to_idx)
   end
 
-  def update_order(list, from_idx, to_idx)
-    #update table 
-    #set order = order - 1
-    #where order >= ? and order <= ?;
+  def update_ticket_order_diff_col(src_col, dest_col, src_ticket_idx, dest_ticket_idx)
+    src_tickets = src_col.tickets
+    dest_tickets = dest_col.tickets
+    moved_ticket = src_tickets.find_by(order: params[:src_ticket_idx])
 
-    #update table
-    #set order = ?
-    #where song = ?
+    src_tickets.where('"order" > ?', src_ticket_idx).update_all('"order" = "order" - 1')
+    dest_tickets.where('"order" >= ?', dest_ticket_idx).update_all('"order" = "order" + 1')
+    moved_ticket.update(column_id: dest_col.id, order: dest_ticket_idx)
   end
 end
