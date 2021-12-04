@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import uniqid from "uniqid";
 import Column from "./Column";
-import Ticket from "./Ticket";
 import BoardColumns from "./BoardColumns";
 import consumer from "../channels/consumer";
 
@@ -46,17 +45,17 @@ const Board = (props) => {
     <div id="board">
       <BoardColumns boardID={boardID}>
         { columns.map((column) => {
-            return (
-              <Column key={uniqid('column-')} columnID={column.id}>
-                { column.tickets.map((ticket) => {
-                    return <Ticket key={uniqid('ticket-')} desc={ticket.title} />
-                })}
-              </Column>
-            )    
+            return <Column key={uniqid('column-')} column={column} />
         })}
       </BoardColumns>
     </div>
   )
 };
+
+/*
+{ column.tickets.map((ticket) => {
+                    return <Ticket key={uniqid('ticket-')} desc={ticket.title} />
+                })}
+*/
 
 export default Board;
