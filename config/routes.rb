@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       resources :boards, only: [ :create, :show ]
       resources :columns, only: [ :create ]
       resources :tickets, only: [ :create ]
+      post 'tickets/move', to: 'tickets#move'
     end
   end
 

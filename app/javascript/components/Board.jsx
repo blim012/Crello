@@ -8,20 +8,21 @@ import consumer from "../channels/consumer";
 
 const Board = (props) => {
   const [columns, setColumns] = useState([]);
-  const [boardID, setBoardID] = useState(-1);
+  const [boardID, setBoardID] = useState(null);
 
   useEffect(() => {
     axios.get('/api/v1/boards/1')
     .then((response) => {
       let data = response.data;
       console.log(data);
+      console.log(data[0].id);
       setColumns(data[0].ordered_columns);
       setBoardID(data[0].id);
     });
   }, []);
 
   useEffect(() => {
-    if(boardID >= 0) {
+    if(boardID) {
       consumer.subscriptions.create({ channel: 'BoardsChannel', board_id: `${boardID}`}, {
         connected() {
           // Called when the subscription is ready for use on the server
@@ -43,19 +44,15 @@ const Board = (props) => {
 
   return (
     <div id="board">
-      <BoardColumns boardID={boardID}>
-        { columns.map((column) => {
-            return <Column key={uniqid('column-')} column={column} />
-        })}
-      </BoardColumns>
+      {boardID &&
+        <BoardColumns boardID={boardID}>
+          { columns.map((column) => {
+              return <Column key={uniqid('column-')} column={column} />
+          })}
+        </BoardColumns>
+      }
     </div>
   )
 };
-
-/*
-{ column.tickets.map((ticket) => {
-                    return <Ticket key={uniqid('ticket-')} desc={ticket.title} />
-                })}
-*/
 
 export default Board;

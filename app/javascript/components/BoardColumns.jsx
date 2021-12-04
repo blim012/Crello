@@ -14,9 +14,7 @@ const BoardColumns = (props) => {
       ticketMoveData = { columnIndex, ticketIndex };
     })
     .on('drop', (el, target, source, sibling) => {
-      console.log(ticketMoveData);
-      console.log('destination column index: ' + Array.from(target.parentElement.parentElement.children).indexOf(target.parentElement));
-      console.log('destination ticket index: ' + Array.from(target.children).indexOf(el));
+      sendMove(el, target);
     }));
   const [columnDrake] = useState(
     Dragula([], {
@@ -55,6 +53,21 @@ const BoardColumns = (props) => {
       console.log(response);
     })
   };
+
+  const sendMove = (el, target) => {
+      console.log(ticketMoveData);
+      console.log('destination column index: ' + Array.from(target.parentElement.parentElement.children).indexOf(target.parentElement));
+      console.log('destination ticket index: ' + Array.from(target.children).indexOf(el));
+      console.log(props.boardID);
+      
+      axios.post('/api/v1/tickets/move', {
+        src_col_idx: ticketMoveData.columnIndex,
+        src_ticket_idx: ticketMoveData.ticketIndex,
+        dest_col_idx: Array.from(target.parentElement.parentElement.children).indexOf(target.parentElement),
+        dest_ticket_idx: Array.from(target.children).indexOf(el),
+        board_id: props.boardID
+      });
+  }
 
   const cancelDrags = () => {
     ticketDrake.cancel(true);
