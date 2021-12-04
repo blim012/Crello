@@ -5,6 +5,8 @@ import axios from "axios";
 
 const BoardColumns = (props) => {
   let ticketMoveData = {};
+  let columnMoveSourceIndex = -1; 
+
   const [ticketDrake] = useState(
     Dragula([])
     .on('drag', (el, source) => {
@@ -14,21 +16,24 @@ const BoardColumns = (props) => {
       ticketMoveData = { columnIndex, ticketIndex };
     })
     .on('drop', (el, target, source, sibling) => {
-      sendMove(el, target);
-    }));
+      sendTicketMove(el, target);
+    })
+  );
+  
   const [columnDrake] = useState(
     Dragula([], {
       moves: (el, container, handle) => {
         return handle.className === 'handle';
       },
       direction: 'horizontal'
-    }));
-
-  document.addEventListener('keydown', (e) => {
-    if(e.code === 'Escape') {
-      cancelDrags();
-    } 
-  });
+    })
+    .on('drag', (el, source) => {
+      columnMoveSourceIndex = Array.from(source.children).indexOf(el);
+    })
+    .on('drop', (el, target, source, sibling) => {
+      sendColumnMove(el, source);
+    })
+  );
 
   useEffect(() => {
     ticketDrake.containers = [...document.querySelectorAll('.column-tickets')] 
@@ -54,7 +59,7 @@ const BoardColumns = (props) => {
     })
   };
 
-  const sendMove = (el, target) => {
+  const sendTicketMove = (el, target) => {
       console.log(ticketMoveData);
       console.log('destination column index: ' + Array.from(target.parentElement.parentElement.children).indexOf(target.parentElement));
       console.log('destination ticket index: ' + Array.from(target.children).indexOf(el));
@@ -69,10 +74,25 @@ const BoardColumns = (props) => {
       });
   }
 
+  const sendColumnMove = (el, source) => {
+    console.log('Source index: ' + columnMoveSourceIndex)
+    console.log('Destination index: ' + Array.from(source.children).indexOf(el));
+
+    axios.post('/api/v1/columns/move', {
+      src_idx: columnMoveSourceIndex,
+      dest_idx: Array.from(source.children).indexOf(el),
+      board_id: props.boardID
+    });
+  }
+
   const cancelDrags = () => {
     ticketDrake.cancel(true);
     columnDrake.cancel(true);
   }
+
+  document.addEventListener('keydown', (e) => {
+    if(e.code === 'Escape') cancelDrags(); 
+  });
 
   return (
     <div className="board-columns-container">

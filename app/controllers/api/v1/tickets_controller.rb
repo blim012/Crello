@@ -24,7 +24,7 @@ class Api::V1::TicketsController < ApplicationController
 
     if(params[:src_col_idx] == params[:dest_col_idx])
       tickets = Column.find_by(board_id: params[:board_id], order: params[:src_col_idx]).tickets
-      update_same_col_order(tickets, params[:src_ticket_idx], params[:dest_ticket_idx])
+      update_ticket_order_same_col(tickets, params[:src_ticket_idx], params[:dest_ticket_idx])
       helpers.broadcast_update(Board.find(params[:board_id]))
     else
       # update_diff_col_order
@@ -42,7 +42,7 @@ class Api::V1::TicketsController < ApplicationController
     Board.find_by(id: column.board_id)
   end
 
-  def update_same_col_order(tickets, from_idx, to_idx)
+  def update_ticket_order_same_col(tickets, from_idx, to_idx)
     moved_ticket = tickets.find_by(order: from_idx)
     if from_idx < to_idx
       tickets.where('"order" > ? AND "order" <= ?', from_idx, to_idx).update_all('"order" = "order" - 1')
