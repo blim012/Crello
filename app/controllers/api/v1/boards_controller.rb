@@ -1,8 +1,12 @@
 class Api::V1::BoardsController < ApplicationController
-  #skip_before_action :verify_authenticity_token
+  before_action :authenticate_user!
+
+  def index
+    @boards = current_user.boards
+    render json: @boards
+  end
 
   def create
-    #sign_in(:user, User.first)
     @board = current_user.boards.build(board_params)
     if @board.save
       render json: @board
