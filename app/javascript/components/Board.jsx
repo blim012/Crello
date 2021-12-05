@@ -9,6 +9,7 @@ import consumer from "../channels/consumer";
 const Board = (props) => {
   const [columns, setColumns] = useState([]);
   const [boardID, setBoardID] = useState(null);
+  const [boardTitle, setBoardTitle] = useState('');
 
   useEffect(() => {
     axios.get('/api/v1/boards/1')
@@ -17,6 +18,7 @@ const Board = (props) => {
       console.log(data);
       console.log(data[0].id);
       setColumns(data[0].ordered_columns);
+      setBoardTitle(data[0].title);
       setBoardID(data[0].id);
     });
   }, []);
@@ -44,6 +46,7 @@ const Board = (props) => {
 
   return (
     <div id="board">
+      <h1 className="board-title">{boardTitle}</h1>
       {boardID &&
         <BoardColumns boardID={boardID}>
           { columns.map((column) => {
