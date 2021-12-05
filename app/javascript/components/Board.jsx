@@ -12,7 +12,7 @@ const Board = (props) => {
   const [boardTitle, setBoardTitle] = useState('');
 
   useEffect(() => {
-    axios.get('/api/v1/boards/1')
+    axios.get(`/api/v1/boards/${props.boardID}`)
     .then((response) => {
       let data = response.data;
       console.log(data);

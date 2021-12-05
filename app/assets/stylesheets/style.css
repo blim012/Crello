@@ -8,6 +8,10 @@
   margin: 1rem;
 }
 
+#nav-sidebar {
+  padding: 2rem;
+}
+
 .board-columns-container {
   display: flex;
 }
