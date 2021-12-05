@@ -10,6 +10,7 @@ const Board = (props) => {
   const [columns, setColumns] = useState([]);
   const [boardID, setBoardID] = useState(null);
   const [boardTitle, setBoardTitle] = useState('');
+  const [boardChannel, setBoardChannel] = useState(null);
 
   useEffect(() => {
     axios.get(`/api/v1/boards/${props.boardID}`)
@@ -25,7 +26,8 @@ const Board = (props) => {
 
   useEffect(() => {
     if(boardID) {
-      consumer.subscriptions.create({ channel: 'BoardsChannel', board_id: `${boardID}`}, {
+      if(boardChannel) consumer.subscriptions.remove(boardChannel);
+      const boardChannelToSet = consumer.subscriptions.create({ channel: 'BoardsChannel', board_id: `${boardID}`}, {
         connected() {
           // Called when the subscription is ready for use on the server
           console.log(`Connect to board ${boardID}`);
@@ -41,6 +43,7 @@ const Board = (props) => {
           setColumns(data.board.ordered_columns);
         }
       });
+      setBoardChannel(boardChannelToSet);
     }
   }, [boardID]);
 
