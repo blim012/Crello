@@ -21,7 +21,7 @@ const Board = (props) => {
       setBoardTitle(data[0].title);
       setBoardID(data[0].id);
     });
-  }, []);
+  }, [props.boardID]);
 
   useEffect(() => {
     if(boardID) {
