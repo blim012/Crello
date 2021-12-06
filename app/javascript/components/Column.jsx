@@ -20,9 +20,15 @@ const Column = (props) => {
     })
   };
 
+  const handleColumnDestroy = () => {
+    axios.delete(`/api/v1/columns/${props.column.id}`, {});
+  };
+
   return (
     <div className='column'>
-      <div className="handle"></div>
+      <div className="handle">
+        <div className="column-destroy" onClick={handleColumnDestroy}>X</div>
+      </div>
       <div className="column-tickets">
         { props.column.tickets.map((ticket) => {
             return <Ticket key={uniqid('ticket-')} ticketID={ticket.id} desc={ticket.title} />

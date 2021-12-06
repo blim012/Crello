@@ -12,7 +12,9 @@ class Api::V1::ColumnsController < ApplicationController
   end
 
   def destroy
-
+    @column = Column.find(params[:id])
+    delete_column_and_update_order(@column)
+    helpers.broadcast_update(@column.board)
   end
 
   def move
@@ -40,5 +42,11 @@ class Api::V1::ColumnsController < ApplicationController
       columns.where('"order" < ? AND "order" >= ?', from_idx, to_idx).update_all('"order" = "order" + 1')
     end
     moved_columns.update(order: to_idx)
+  end
+
+  def delete_column_and_update_order(column)
+    columns = column.board.columns
+    columns.where('"order" > ?', column.order).update_all('"order" = "order" - 1')
+    column.destroy
   end
 end
