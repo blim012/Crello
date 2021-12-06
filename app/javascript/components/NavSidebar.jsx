@@ -3,7 +3,7 @@ import { useRef } from "react";
 import uniqid from 'uniqid';
 
 const NavSidebar = (props) => {
-  const {userBoards, sharedBoards, handleBoardLink} = props;
+  const {userBoards, invitedBoards, handleBoardLink} = props;
   const navElement = useRef(); 
   const navOpenElement = useRef();
 
@@ -29,6 +29,7 @@ const NavSidebar = (props) => {
         </div>
       </div>
       <div id="nav-boards">
+        <p>Your Boards:</p>
         <ul id="user-boards">
           { userBoards.map((board) => {
             return (
@@ -40,13 +41,14 @@ const NavSidebar = (props) => {
             )
           })}
         </ul>
-        <ul id="shared-boards">
-          { sharedBoards.map((board) => {
+        <p>Boards Shared with You:</p>
+        <ul id="invited-boards">
+          { invitedBoards.map((board) => {
             return (
-              <li className="shared-board-item" 
-                  key={uniqid('sharedBoard-')} 
+              <li className="invited-board-item" 
+                  key={uniqid('invitedBoard-')} 
                   onClick={() => handleBoardClick(board.id)}>
-                <p className="shared-board-link">{board.title}</p>
+                <p className="invited-board-link">{board.title}</p>
               </li>
             )
           })}

@@ -2,8 +2,9 @@ class Api::V1::BoardsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @boards = current_user.boards
-    render json: @boards
+    @user_boards = current_user.boards
+    @invited_boards = current_user.invited_boards
+    render json: { userBoards: @user_boards, invitedBoards: @invited_boards }
   end
 
   def create
