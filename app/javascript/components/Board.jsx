@@ -11,16 +11,24 @@ const Board = (props) => {
   const [boardID, setBoardID] = useState(null);
   const [boardTitle, setBoardTitle] = useState('');
   const [boardChannel, setBoardChannel] = useState(null);
+  const [boardNotFound, setBoardNotFound] = useState(false);
 
   useEffect(() => {
     axios.get(`/api/v1/boards/${props.boardID}`)
     .then((response) => {
       let data = response.data;
-      console.log(data);
-      console.log(data[0].id);
-      setColumns(data[0].ordered_columns);
-      setBoardTitle(data[0].title);
-      setBoardID(data[0].id);
+      console.log(response);
+      if(data.hasOwnProperty('no_board_found')) {
+        setBoardNotFound(true);
+      }
+      else {
+        console.log(data);
+        console.log(data.id);
+        setColumns(data.ordered_columns);
+        setBoardTitle(data.title);
+        setBoardID(data.id);
+        setBoardNotFound(false);
+      }
     });
   }, [props.boardID]);
 
@@ -40,7 +48,7 @@ const Board = (props) => {
       
         received(data) {
           // Called when there's incoming data on the websocket for this channel
-          setColumns(data.board.ordered_columns);
+          data.hasOwnProperty('delete') ? setBoardNotFound(true) : setColumns(data.board.ordered_columns);
         }
       });
       setBoardChannel(boardChannelToSet);
@@ -48,16 +56,22 @@ const Board = (props) => {
   }, [boardID]);
 
   return (
-    <div id="board">
-      <h1 className="board-title">{boardTitle}</h1>
-      {boardID &&
-        <BoardColumns boardID={boardID}>
-          { columns.map((column) => {
-              return <Column key={uniqid('column-')} column={column} />
-          })}
-        </BoardColumns>
-      }
-    </div>
+    boardNotFound
+      ?
+      <p>Board not found or deleted by board owner</p>
+
+      :
+      <div id="board">
+        <h1 className="board-title">{boardTitle}</h1>
+        {boardID &&
+          <BoardColumns boardID={boardID}>
+            { columns.map((column) => {
+                return <Column key={uniqid('column-')} column={column} />
+            })}
+          </BoardColumns>
+        }
+      </div>
+    
   )
 };
 

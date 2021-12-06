@@ -33,6 +33,24 @@ const Dashboard = (props) => {
     });
   }, []);
 
+  const handleBoardDestroy = (boardID) => {
+    axios.delete(`/api/v1/boards/${boardID}`, {})
+    .then((response) => {
+      let data = response.data;
+      if(data.hasOwnProperty('errors')) 
+        return alert('Cannot delete. Only the board owner may delete a board');
+      let userBoardsCopy = [...userBoards];
+      for(let i = 0; i < userBoardsCopy.length; i++) {
+        if(userBoardsCopy[i].id === boardID) {
+          userBoardsCopy.splice(i, 1);
+          console.log(userBoardsCopy);
+          setUserBoards(userBoardsCopy);
+          return;
+        }
+      }
+    })
+  }
+
   const handleBoardLink = (boardID) => {
     console.log(boardID);
     setSelectedBoardID(boardID);
@@ -40,7 +58,7 @@ const Dashboard = (props) => {
 
   return (
     <div id="dashboard">
-      <NavSidebar userBoards={userBoards} invitedBoards={invitedBoards} handleBoardLink={handleBoardLink} />
+      <NavSidebar userBoards={userBoards} invitedBoards={invitedBoards} handleBoardLink={handleBoardLink} handleBoardDestroy={handleBoardDestroy} />
       {selectedBoardID >= 0 
         ?
         <Board boardID={selectedBoardID} />
