@@ -25,7 +25,7 @@ const Column = (props) => {
       <div className="handle"></div>
       <div className="column-tickets">
         { props.column.tickets.map((ticket) => {
-            return <Ticket key={uniqid('ticket-')} desc={ticket.title} />
+            return <Ticket key={uniqid('ticket-')} ticketID={ticket.id} desc={ticket.title} />
         })}
       </div>
       <button className="add-ticket-button" onClick={ticketButtonHandler}>+ Ticket</button>

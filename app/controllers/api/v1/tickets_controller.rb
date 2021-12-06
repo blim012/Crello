@@ -12,16 +12,12 @@ class Api::V1::TicketsController < ApplicationController
   end
 
   def destroy
-
+    @ticket = Ticket.find(params[:id])
+    delete_ticket_and_update_order(@ticket)
+    helpers.broadcast_update(@ticket.column.board)
   end
 
   def move
-    # src_col_idx
-    # src_ticket_idx
-    # dest_col_idx
-    # dest_ticket_idx
-    # board_id
-
     dest_col = Column.find_by(board_id: params[:board_id], order: params[:dest_col_idx])
     if(params[:src_col_idx] == params[:dest_col_idx])
       dest_tickets = dest_col.tickets
@@ -44,7 +40,6 @@ class Api::V1::TicketsController < ApplicationController
     Board.find_by(id: column.board_id)
   end
 
-  # Generalizable
   def update_ticket_order_same_col(tickets, from_idx, to_idx)
     moved_ticket = tickets.find_by(order: from_idx)
     if from_idx < to_idx
@@ -63,5 +58,11 @@ class Api::V1::TicketsController < ApplicationController
     src_tickets.where('"order" > ?', src_ticket_idx).update_all('"order" = "order" - 1')
     dest_tickets.where('"order" >= ?', dest_ticket_idx).update_all('"order" = "order" + 1')
     moved_ticket.update(column_id: dest_col.id, order: dest_ticket_idx)
+  end
+
+  def delete_ticket_and_update_order(ticket)
+    tickets = ticket.column.tickets
+    tickets.where('"order" > ?', ticket.order).update_all('"order" = "order" - 1')
+    ticket.destroy
   end
 end
