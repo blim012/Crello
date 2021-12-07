@@ -3,11 +3,12 @@
 }
 
 .board-columns {
+  color: #C8C4BD;
   display: flex;
 }
 
 .handle {
-  background-color: aqua;
+  background-color: #212529;
   border: 3px solid black;
 }
 
@@ -15,7 +16,7 @@
   width: 272px;
   height: min-content;
   padding: 10px;
-  background-color: black;
+  background-color: #212529;
   margin-right: 20px;
 }
 
@@ -26,7 +27,7 @@
 .column-destroy {
   float: right;
   width: min-content;
-  background-color: white;
+  background-color: #212529;
 }
 
 .column-tickets {
@@ -41,6 +42,10 @@
 
 .ticket {
   text-align: center;
-  background-color: red;
-  border: 3px solid black;
+  background-color: #111315;
+  margin-bottom: 0.5rem;
+}
+
+.ticket:last-child {
+  margin-bottom: 0;
 }
