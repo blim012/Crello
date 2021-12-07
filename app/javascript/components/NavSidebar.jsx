@@ -18,6 +18,7 @@ const NavSidebar = (props) => {
   const handleBoardClick = (boardID) => {
     navElement.current.classList.remove('nav-sidebar-open');
     navOpenElement.current.classList.remove('no-display');
+    navPeekElement.current.classList.remove('no-display');
     handleBoardLink(boardID);
   };
 
