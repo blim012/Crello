@@ -19,18 +19,6 @@ const NavSidebar = (props) => {
     handleBoardLink(boardID);
   };
 
-  /*
-  const handleBoardDestroy = (e, boardID) => {
-    axios.delete(`/api/v1/boards/${boardID}`, {})
-    .then((response) => {
-      let data = response.data;
-      if(data.hasOwnProperty('errors')) 
-        return alert('Cannot delete. Only the board owner may delete a board');
-      e.nativeEvent.target.parentElement.remove();
-    })
-  };
-  */
-
   return (
     <nav id="nav-sidebar" ref={navElement}>
       <div className="rel-wrapper">
@@ -42,7 +30,7 @@ const NavSidebar = (props) => {
         </div>
       </div>
       <div id="nav-boards">
-        <p>Your Boards:</p>
+        <h2 className="nav-board-header">Your Boards:</h2>
         <ul id="user-boards">
           { userBoards.map((board) => {
             return (
@@ -53,7 +41,7 @@ const NavSidebar = (props) => {
             )
           })}
         </ul>
-        <p>Boards Shared with You:</p>
+        <h2 className="nav-board-header">Boards Shared with You:</h2>
         <ul id="invited-boards">
           { invitedBoards.map((board) => {
             return (
