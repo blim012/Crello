@@ -7,10 +7,12 @@ const NavSidebar = (props) => {
   const {userBoards, invitedBoards, handleBoardLink, handleBoardDestroy} = props;
   const navElement = useRef(); 
   const navOpenElement = useRef();
+  const navPeekElement = useRef();
 
   const toggleNav = () => {
     navElement.current.classList.toggle('nav-sidebar-open');
     navOpenElement.current.classList.toggle('no-display');
+    navPeekElement.current.classList.toggle('no-display');
   };
 
   const handleBoardClick = (boardID) => {
@@ -28,7 +30,7 @@ const NavSidebar = (props) => {
         <div id="nav-toggle-inner" onClick={toggleNav}>
           <p>X</p>
         </div>
-        <div id="nav-peek" onClick={toggleNav}></div>
+        <div id="nav-peek" ref={navPeekElement} onClick={toggleNav}></div>
       </div>
       <div id="nav-boards">
         <h2 className="nav-board-header">Your Boards:</h2>
