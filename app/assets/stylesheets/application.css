@@ -21,3 +21,7 @@
 .rel-wrapper {
   position: relative !important;
 }
+
+* {
+  box-sizing: border-box;
+}

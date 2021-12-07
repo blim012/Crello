@@ -6,7 +6,7 @@
   width: 250px;
   height: 100vh;
   background-color: bisque;
-  transform: translateX(-250px);
+  transform: translateX(-230px);
   transition: transform 0.25s ease-in-out;
 }
 
