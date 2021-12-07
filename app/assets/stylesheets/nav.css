@@ -28,6 +28,7 @@
   border-radius: 50%;
   background-color: rgba(0, 0, 0, 50%);
   transition: background-color 0.15s linear;
+  cursor: pointer;
 }
 
 #nav-toggle-inner {
@@ -36,6 +37,7 @@
   right: 10px;
   padding: 5px;
   background-color: #212529;
+  cursor: pointer;
 }
 
 #nav-peek {
@@ -44,6 +46,7 @@
   right: -10px;
   width: 40px;
   height: 100vh;
+  cursor: pointer;
 }
 
 #nav-sidebar:hover {
@@ -72,6 +75,7 @@
 
 .board-destroy {
   display: none;
+  cursor: pointer;
 }
 
 .user-board-item:hover .board-destroy {
@@ -80,6 +84,7 @@
 
 .user-board-link {
   flex-grow: 1;
+  cursor: pointer;
 }
 
 .nav-sidebar-open {

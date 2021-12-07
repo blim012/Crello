@@ -27,11 +27,23 @@
   display: inline;
 }
 
+.column-title:hover {
+  cursor: pointer;
+}
+
 .column-destroy {
   display: none;
   float: right;
   width: min-content;
   background-color: #212529;
+}
+
+.column-destroy:hover {
+  cursor: pointer;
+}
+
+.handle:hover {
+  cursor: pointer;
 }
 
 .handle:hover .column-destroy {
@@ -49,12 +61,33 @@
 }
 
 .ticket {
-  text-align: center;
+  display: flex;
   background-color: #111315;
   margin-bottom: 0.5rem;
   border-radius: 5px;
 }
 
+.ticket-description {
+  flex-grow: 1;
+}
+
 .ticket:last-child {
   margin-bottom: 0;
+}
+
+.ticket:hover {
+  cursor: pointer;
+}
+
+.ticket-destroy {
+  display: none;
+  width: min-content;
+}
+
+.ticket:hover .ticket-destroy {
+  display: block;
+}
+
+.ticket-destroy:hover {
+  cursor: pointer;
 }
