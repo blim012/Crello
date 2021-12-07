@@ -13,3 +13,11 @@
  *= require_tree .
  *= require_self
  */
+
+.no-display {
+  display: none !important;
+}
+
+.rel-wrapper {
+  position: relative !important;
+}
