@@ -7,8 +7,9 @@
   height: 100vh;
   background-color: #212529;
   color: #C8C4BD;
+  opacity: 50%;
   transform: translateX(-280px);
-  transition: transform 0.25s ease-in-out;
+  transition: transform 0.15s ease-in-out, opacity 0.15s linear;
 }
 
 #nav-boards {
@@ -25,7 +26,8 @@
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  background-color: rgba(0, 0, 0, 20%);
+  background-color: rgba(0, 0, 0, 50%);
+  transition: background-color 0.15s linear;
 }
 
 #nav-toggle-inner {
@@ -34,6 +36,22 @@
   right: 10px;
   padding: 5px;
   background-color: #212529;
+}
+
+#nav-peek {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  width: 40px;
+  height: 100vh;
+}
+
+#nav-sidebar:hover {
+  opacity: 80%;
+}
+
+#nav-sidebar:hover #nav-toggle-outer {
+  background-color: rgba(0, 0, 0, 100%);
 }
 
 .nav-board-header {
@@ -66,4 +84,5 @@
 
 .nav-sidebar-open {
   transform: translateX(0) !important;
+  opacity: 100% !important;
 }

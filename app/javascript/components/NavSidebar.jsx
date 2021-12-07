@@ -28,6 +28,7 @@ const NavSidebar = (props) => {
         <div id="nav-toggle-inner" onClick={toggleNav}>
           <p>X</p>
         </div>
+        <div id="nav-peek" onClick={toggleNav}></div>
       </div>
       <div id="nav-boards">
         <h2 className="nav-board-header">Your Boards:</h2>
