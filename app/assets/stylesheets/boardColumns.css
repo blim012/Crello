@@ -28,9 +28,14 @@
 }
 
 .column-destroy {
+  display: none;
   float: right;
   width: min-content;
   background-color: #212529;
+}
+
+.handle:hover .column-destroy {
+  display: block;
 }
 
 .column-tickets {
