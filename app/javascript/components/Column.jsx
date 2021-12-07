@@ -26,7 +26,8 @@ const Column = (props) => {
 
   return (
     <div className='column'>
-      <div className="handle">
+      <div className="handle column-item">
+        <p className="column-title">{props.column.title}</p>
         <div className="column-destroy" onClick={handleColumnDestroy}>X</div>
       </div>
       <div className="column-tickets">

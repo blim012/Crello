@@ -51,7 +51,7 @@ const BoardColumns = (props) => {
     return (
       Dragula([document.querySelector('.board-columns')], {
         moves: (el, container, handle) => {
-          return handle.className === 'handle';
+          return handle.classList.contains('handle') || handle.parentElement.classList.contains('handle');
         },
         direction: 'horizontal'
       })

@@ -6,21 +6,41 @@
   display: flex;
 }
 
-.ticket {
-  width: 100px;
-  height: 50px;
-  text-align: center;
-  background-color: red;
-  border: 3px solid black;
-}
-
 .handle {
-  width: 100px;
-  height: 50px;
   background-color: aqua;
   border: 3px solid black;
 }
 
 .column {
-  margin: 0 1rem;
+  width: 272px;
+  height: min-content;
+  padding: 10px;
+  background-color: black;
+  margin-right: 20px;
+}
+
+.column-title {
+  display: inline;
+}
+
+.column-destroy {
+  float: right;
+  width: min-content;
+  background-color: white;
+}
+
+.column-tickets {
+  padding: 1rem 0;
+}
+
+.column-item {
+  width: 100%;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.ticket {
+  text-align: center;
+  background-color: red;
+  border: 3px solid black;
 }
