@@ -1,0 +1,10 @@
+#board {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+}
+
+.board-title {
+  font-size: 1.5rem;
+  margin: 1rem;
+}
