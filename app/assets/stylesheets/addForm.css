@@ -1,5 +1,5 @@
 .add-form-container {
-  margin-top: 10px;
+  color: #C8C4BD;
 }
 
 .add-form-buttons {
@@ -14,7 +14,6 @@
 }
 
 .add-form-text {
-  color: #C8C4BD;
   font-size: 1.1rem;
   padding: 0.5rem;
 }
@@ -48,4 +47,29 @@
 
 .add-form-submit:hover {
   cursor: pointer;
+}
+
+.board-columns-container > .add-form-container {
+  height: min-content;
+  width: 272px;
+  border-radius: 5px;
+}
+
+.board-columns-container > .add-form-container > .add-form-text {
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  background-color: rgba(33, 37, 41, 30%);
+  border-radius: 5px;
+}
+
+.board-columns-container > .add-form-container > .add-form-text:hover {
+  color: white;
+  background-color: rgba(33, 37, 41, 70%);
+}
+
+.board-columns-container > .add-form-container > .add-form {
+  padding: 20px;
+  border-radius: 5px;
+  background-color: #1D2124;
 }
