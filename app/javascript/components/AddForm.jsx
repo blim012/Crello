@@ -28,7 +28,8 @@ const AddForm = (props) => {
       {formOpen
         ?
         <form className="add-form" ref={addFormElement} onSubmit={onSubmit}>
-          <textarea 
+          <textarea
+            className="prevent-drag-scroll"
             placeholder={`Enter ${subjectName} title...`} 
             value={textValue} 
             onChange={handleChange} 
