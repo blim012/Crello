@@ -16,7 +16,7 @@
 .column {
   width: 272px;
   height: min-content;
-  padding: 10px 0 10px 10px;
+  padding: 10px;
   background-color: #212529;
   margin-right: 20px;
   border-radius: 5px;
@@ -52,7 +52,6 @@
 
 .column-tickets {
   padding-top: 20px;
-  padding-right: 10px;
   margin-bottom: 10px;
   max-height: 70vh;
   overflow-y: auto;
