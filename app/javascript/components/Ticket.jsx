@@ -7,7 +7,7 @@ const Ticket = (props) => {
   };
 
   return (
-    <div className="ticket column-item">
+    <div className="ticket column-item prevent-drag-scroll">
       <p className="ticket-description">{ props.desc }</p>
       <div className="ticket-destroy" onClick={handleTicketDestroy}>X</div>
     </div>

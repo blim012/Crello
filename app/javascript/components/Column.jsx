@@ -28,7 +28,7 @@ const Column = (props) => {
 
   return (
     <div className='column' ref={columnElement}>
-      <div className="handle column-item">
+      <div className="handle column-item prevent-drag-scroll">
         <p className="column-title">{props.column.title}</p>
         <div className="column-destroy" onClick={handleColumnDestroy}>X</div>
       </div>

@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import uniqid from "uniqid";
+import ScrollContainer from 'react-indiana-drag-scroll'
 import Column from "./Column";
 import BoardColumns from "./BoardColumns";
 import consumer from "../channels/consumer";
@@ -61,16 +62,22 @@ const Board = (props) => {
       <p>Board not found or deleted by board owner</p>
 
       :
-      <div id="board">
-        <h1 className="board-title">{boardTitle}</h1>
-        {boardID &&
-          <BoardColumns boardID={boardID}>
-            { columns.map((column) => {
-                return <Column key={uniqid('column-')} column={column} />
-            })}
-          </BoardColumns>
-        }
-      </div>
+      <ScrollContainer 
+        className="scroll-container" 
+        ignoreElements=".prevent-drag-scroll"
+        hideScrollbars={false} >
+
+        <div id="board">
+          <h1 className="board-title">{boardTitle}</h1>
+          {boardID &&
+            <BoardColumns boardID={boardID}>
+              { columns.map((column) => {
+                  return <Column key={uniqid('column-')} column={column} />
+              })}
+            </BoardColumns>
+          }
+        </div>
+      </ScrollContainer>
     
   )
 };

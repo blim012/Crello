@@ -51,7 +51,7 @@
 
 .board-columns-container > .add-form-container {
   height: min-content;
-  width: 272px;
+  min-width: 272px;
   border-radius: 5px;
 }
 
