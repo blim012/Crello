@@ -39,6 +39,10 @@
 }
 
 .column-destroy:hover {
+  color: white;
+}
+
+.column-destroy:hover {
   cursor: pointer;
 }
 
@@ -93,4 +97,5 @@
 
 .ticket-destroy:hover {
   cursor: pointer;
+  color: white;
 }

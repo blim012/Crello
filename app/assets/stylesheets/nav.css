@@ -40,6 +40,11 @@
   cursor: pointer;
 }
 
+#nav-toggle-inner:hover {
+  color: white;
+  cursor: pointer;
+}
+
 #nav-peek {
   position: absolute;
   top: -10px;
