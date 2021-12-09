@@ -1,13 +1,15 @@
 import React from "react";
+import { useRef } from "react";
 import uniqid from "uniqid";
 import axios from "axios";
 import Ticket from "./Ticket";
+import AddForm from "./AddForm";
 
 const Column = (props) => {
-  const ticketButtonHandler = (e) => {
-    let title = prompt('Enter Title');
-    let columnElement = e.nativeEvent.originalTarget.parentElement;
-    let columnTicketsLength = columnElement.querySelector('.column-tickets').children.length;
+  const columnElement = useRef();
+
+  const addTicket = (title) => {
+    const columnTicketsLength = columnElement.current.querySelector('.column-tickets').children.length;
     console.log(columnTicketsLength);
     axios.post('/api/v1/tickets', {
       column_id: props.column.id,
@@ -25,7 +27,7 @@ const Column = (props) => {
   };
 
   return (
-    <div className='column'>
+    <div className='column' ref={columnElement}>
       <div className="handle column-item">
         <p className="column-title">{props.column.title}</p>
         <div className="column-destroy" onClick={handleColumnDestroy}>X</div>
@@ -35,7 +37,7 @@ const Column = (props) => {
             return <Ticket key={uniqid('ticket-')} ticketID={ticket.id} desc={ticket.title} />
         })}
       </div>
-      <button className="add-ticket-button" onClick={ticketButtonHandler}>+ Ticket</button>
+      <AddForm subjectName='Ticket' handleSubmit={addTicket} />
     </div>
   );
 };

@@ -1,0 +1,19 @@
+.add-form > textarea {
+  width: 100%;
+  resize: none;
+}
+
+.add-form-cancel {
+  display: inline;
+}
+
+.add-form-submit {
+  font-family: 'Roboto', sans-serif;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  background-color: #023e8a;
+  margin-top: 1rem;
+  margin-right: 1rem;
+  padding: 0.5rem;
+}
