@@ -1,10 +1,39 @@
+.add-form-container {
+  margin-top: 10px;
+}
+
+.add-form-buttons {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
 .add-form > textarea {
   width: 100%;
   resize: none;
 }
 
+.add-form-text {
+  color: #C8C4BD;
+  font-size: 1.1rem;
+  padding: 0.5rem;
+}
+
+.add-form-text:hover {
+  color: white;
+  background-color: #1D2124;
+  cursor: pointer;
+}
+
 .add-form-cancel {
   display: inline;
+  padding: 5px;
+}
+
+.add-form-cancel:hover {
+  background-color: #1D2124;
+  cursor: pointer;
+  color: white;
 }
 
 .add-form-submit {
@@ -13,7 +42,10 @@
   border: none;
   border-radius: 5px;
   background-color: #023e8a;
-  margin-top: 1rem;
-  margin-right: 1rem;
   padding: 0.5rem;
+  margin-right: 10px;
+}
+
+.add-form-submit:hover {
+  cursor: pointer;
 }
