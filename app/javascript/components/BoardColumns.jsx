@@ -1,7 +1,8 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Dragula from 'react-dragula';
 import axios from "axios";
+import AddForm from "./AddForm";
 
 const BoardColumns = (props) => {
   let ticketMoveData = {};
@@ -9,6 +10,8 @@ const BoardColumns = (props) => {
 
   const [ticketDrake, setTicketDrake] = useState(null);
   const [columnDrake, setColumnDrake] = useState(null);
+
+  const boardColumnsContainerElement = useRef();
 
   useEffect(() => {
     if(isDrakesInitialized()) {
@@ -95,10 +98,8 @@ const BoardColumns = (props) => {
     columnDrake.containers = [document.querySelector('.board-columns')];
   };
 
-  const columnButtonHandler = (e) => {
-    let title = prompt('Enter Column Title');
-    let boardColumnsContainer = e.nativeEvent.originalTarget.parentElement;
-    let boardColumnsLength = boardColumnsContainer.querySelector('.board-columns').children.length;
+  const addColumn = (title) => {
+    let boardColumnsLength = boardColumnsContainerElement.current.querySelector('.board-columns').children.length;
     console.log(boardColumnsLength);
     axios.post('/api/v1/columns', {
       board_id: props.boardID,
@@ -122,11 +123,11 @@ const BoardColumns = (props) => {
   });
 
   return (
-    <div className="board-columns-container">
+    <div className="board-columns-container" ref={boardColumnsContainerElement}>
       <div className="board-columns">
         { props.children }
       </div>
-      <button className="add-column-button" onClick={columnButtonHandler}>+ Column</button>
+      <AddForm subjectName="Column" handleSubmit={addColumn} />
     </div>
   );
 }
