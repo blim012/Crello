@@ -53,6 +53,14 @@
   cursor: pointer;
 }
 
+#nav-boards > .add-form-container {
+  margin-bottom: 20px;
+}
+
+#nav-boards > .add-form-container > .add-form-text {
+  font-size: 1rem;
+}
+
 .board-columns-container > .add-form-container {
   height: min-content;
   min-width: 272px;
