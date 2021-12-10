@@ -1,13 +1,34 @@
 import React from "react";
-import { useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import uniqid from 'uniqid';
+import AddForm from "./AddForm";
 import axios from "axios";
 
 const NavSidebar = (props) => {
-  const {userBoards, invitedBoards, handleBoardLink, handleBoardDestroy} = props;
+  const handleBoardLink = props.handleBoardLink;
   const navElement = useRef(); 
   const navOpenElement = useRef();
   const navPeekElement = useRef();
+  const [userBoards, setUserBoards] = useState([]);
+  const [invitedBoards, setInvitedBoards] = useState([]);
+
+  useEffect(() => {
+    axios.get('/api/v1/boards')
+    .then((response) => {
+      const data = response.data;
+      let userBoardsToSet = [];
+      data.userBoards.forEach((board) => {
+        userBoardsToSet.push({title: board.title, id: board.id});
+      });
+      setUserBoards(userBoardsToSet);
+      
+      let invitedBoardsToSet = [];
+      data.invitedBoards.forEach((board) => {
+        invitedBoardsToSet.push({title: board.title, id: board.id});
+      });
+      setInvitedBoards(invitedBoardsToSet);
+    });
+  }, []);
 
   const toggleNav = () => {
     navElement.current.classList.toggle('nav-sidebar-open');
@@ -20,6 +41,36 @@ const NavSidebar = (props) => {
     navOpenElement.current.classList.remove('no-display');
     navPeekElement.current.classList.remove('no-display');
     handleBoardLink(boardID);
+  };
+
+  const handleBoardDestroy = (boardID) => {
+    axios.delete(`/api/v1/boards/${boardID}`, {})
+    .then((response) => {
+      let data = response.data;
+      if(data.hasOwnProperty('errors')) 
+        return alert('Cannot delete. Only the board owner may delete a board');
+      let userBoardsCopy = [...userBoards];
+      for(let i = 0; i < userBoardsCopy.length; i++) {
+        if(userBoardsCopy[i].id === boardID) {
+          userBoardsCopy.splice(i, 1);
+          console.log(userBoardsCopy);
+          setUserBoards(userBoardsCopy);
+          return;
+        }
+      }
+    })
+  }
+
+  const addBoard = (title) => {
+    axios.post('/api/v1/boards' , {
+      title: title
+    })
+    .then((response) => {
+      let data = response.data;
+      let userBoardsToSet = [...userBoards];
+      userBoardsToSet.push({title: data.title, id: data.id});
+      setUserBoards(userBoardsToSet);
+    });
   };
 
   return (
@@ -45,6 +96,7 @@ const NavSidebar = (props) => {
             )
           })}
         </ul>
+        <AddForm subjectName="Board" handleSubmit={addBoard} />
         <h2 className="nav-board-header">Boards Shared with You:</h2>
         <ul id="invited-boards">
           { invitedBoards.map((board) => {
