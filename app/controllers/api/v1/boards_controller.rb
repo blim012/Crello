@@ -1,6 +1,6 @@
 class Api::V1::BoardsController < ApplicationController
   before_action :authenticate_user!
-  skip_before_action :verify_authenticity_token, :only => :destroy
+  protect_from_forgery prepend: true
 
   def index
     @user_boards = current_user.boards
