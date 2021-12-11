@@ -22,7 +22,6 @@ class Api::V1::BoardSerializer < ActiveModel::Serializer
         id: ticket.id,
         order: ticket.order,
         title: ticket.title,
-        description: ticket.description
       }
     end
   end

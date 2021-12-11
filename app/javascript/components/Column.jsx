@@ -16,8 +16,7 @@ const Column = (props) => {
     axios.post('/api/v1/tickets', {
       column_id: props.column.id,
       order: columnTicketsLength,
-      title: title,
-      description: 'test'
+      title: title
     })
     .then((response) => {
       console.log(response);

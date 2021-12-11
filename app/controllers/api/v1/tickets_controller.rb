@@ -41,7 +41,7 @@ class Api::V1::TicketsController < ApplicationController
   private
 
   def ticket_params
-    params.require(:ticket).permit(:title, :column_id, :order, :description)
+    params.require(:ticket).permit(:title, :column_id, :order)
   end
 
   def get_board
