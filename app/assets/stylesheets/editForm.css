@@ -1,0 +1,9 @@
+.edit-form-container {
+  border: 1px red solid;
+  display: inline;
+}
+
+.edit-form-text {
+  font-size: 1.1rem;
+  display: inline;
+}
