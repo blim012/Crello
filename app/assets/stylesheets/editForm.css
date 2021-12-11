@@ -2,6 +2,28 @@
   font-size: 1.1rem;
 }
 
+.edit-form-buttons {
+  margin-top: 5px;
+}
+
+.edit-form-buttons > * {
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.8rem;
+  color: white;
+  padding: 0.3rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #023e8a;
+}
+
+.edit-form-buttons > *:hover {
+  cursor: pointer;
+}
+
+.edit-form-submit {
+  margin-right: 5px;
+}
+
 .scroll-container > .edit-form-text {
   font-size: 1.5rem;
   font-weight: 500;
