@@ -1,12 +1,10 @@
 import React from "react";
-import { useState, useRef } from "react";
+import { useState } from "react";
 
 const AddForm = (props) => {
   const {subjectName, handleSubmit} = props;
   const [formOpen, setFormOpen] = useState(false);
   const [textValue, setTextValue] = useState('');
-  const addFormTextElement = useRef();
-  const addFormElement = useRef();
 
   const toggleForm = () => {
     setTextValue('');
@@ -27,7 +25,7 @@ const AddForm = (props) => {
     <div className="add-form-container">
       {formOpen
         ?
-        <form className="add-form" ref={addFormElement} onSubmit={onSubmit}>
+        <form className="add-form" onSubmit={onSubmit}>
           <textarea
             className="prevent-drag-scroll"
             placeholder={`Enter ${subjectName} title...`} 
@@ -41,7 +39,7 @@ const AddForm = (props) => {
         </form>
 
         :
-        <p className="add-form-text" ref={addFormTextElement} onClick={toggleForm}>{`+ ${subjectName}`}</p>
+        <p className="add-form-text" onClick={toggleForm}>{`+ ${subjectName}`}</p>
       }
     </div>
   );
