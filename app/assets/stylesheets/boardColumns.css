@@ -8,6 +8,9 @@
 }
 
 .handle {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
   background-color: #212529;
   border: 1px solid #111315;
   border-radius: 5px;
@@ -33,7 +36,6 @@
 
 .column-destroy {
   display: none;
-  float: right;
   width: min-content;
   background-color: #212529;
 }
