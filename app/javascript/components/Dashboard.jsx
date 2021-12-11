@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import Board from './Board';
 import NavSidebar from './NavSidebar';
+import NavHeader from './NavHeader';
 
 const Dashboard = (props) => {
   const [selectedBoardID, setSelectedBoardID] = useState(-1);
@@ -87,6 +88,7 @@ const Dashboard = (props) => {
 
   return (
     <div id="dashboard">
+      <NavHeader title={selectedBoardTitle} handleBoardTitleChange={handleBoardTitleChange} />
       <NavSidebar 
         userBoards={userBoards} 
         invitedBoards={invitedBoards} 
@@ -95,7 +97,7 @@ const Dashboard = (props) => {
         handleBoardDestroy={handleBoardDestroy} />
       {selectedBoardID >= 0 
         ?
-        <Board boardID={selectedBoardID} title={selectedBoardTitle} handleBoardTitleChange={handleBoardTitleChange} />
+        <Board boardID={selectedBoardID} />
 
         :
         <div>No Board Selected</div>
