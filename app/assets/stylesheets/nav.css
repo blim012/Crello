@@ -13,7 +13,10 @@
 }
 
 #nav-boards {
+  width: 100%;
+  height: 99vh;
   padding-top: 5rem;
+  overflow-y: auto;
 }
 
 #nav-toggle-outer {
@@ -85,7 +88,18 @@
 
 .user-board-link {
   flex-grow: 1;
+}
+
+#user-boards, 
+#invited-boards {
+  overflow-x: hidden;
+  word-break: break-all;
+}
+
+.user-board-link:hover,
+.invited-board-link:hover {
   cursor: pointer;
+  color: white;
 }
 
 .nav-sidebar-open {
