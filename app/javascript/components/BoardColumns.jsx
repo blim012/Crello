@@ -112,8 +112,8 @@ const BoardColumns = (props) => {
   };
 
   const cancelDrags = () => {
-    ticketDrake.cancel(true);
-    columnDrake.cancel(true);
+    if(ticketDrake) ticketDrake.cancel(true);
+    if(columnDrake) columnDrake.cancel(true);
   }
 
   const isDrakesInitialized = () => (ticketDrake && columnDrake);
