@@ -1,11 +1,13 @@
 import React from "react";
-import { useRef } from "react";
+import { useState, useRef } from "react";
 import uniqid from "uniqid";
 import axios from "axios";
 import Ticket from "./Ticket";
 import AddForm from "./AddForm";
+import EditForm from "./EditForm";
 
 const Column = (props) => {
+  const [boardTitle, setBoardTitle] = useState(props.column.title);
   const columnElement = useRef();
 
   const addTicket = (title) => {
@@ -26,10 +28,21 @@ const Column = (props) => {
     axios.delete(`/api/v1/columns/${props.column.id}`, {});
   };
 
+  const handleColumnTitleChange = (title) => {
+    axios.patch(`/api/v1/columns/${props.column.id}` , {
+      title: title,
+      board_id: props.boardID
+    })
+    .then((response) => {
+      let data = response.data;
+      setBoardTitle(data.title);
+    });
+  }
+
   return (
     <div className='column' ref={columnElement}>
       <div className="handle column-item prevent-drag-scroll">
-        <p className="column-title">{props.column.title}</p>
+        <EditForm title={boardTitle} handleSubmit={handleColumnTitleChange} />
         <div className="column-destroy" onClick={handleColumnDestroy}>X</div>
       </div>
       <div className="column-tickets">
@@ -41,5 +54,7 @@ const Column = (props) => {
     </div>
   );
 };
+
+//<p className="column-title">{props.column.title}</p>
 
 export default Column;
