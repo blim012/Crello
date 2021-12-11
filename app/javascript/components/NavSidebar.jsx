@@ -51,7 +51,7 @@ const NavSidebar = (props) => {
           { invitedBoards.map((board) => {
             return (
               <li className="invited-board-item" key={uniqid('invitedBoard-')} >
-                <p className="invited-board-link" onClick={() => handleBoardClick(board.id)}>{board.title}</p>
+                <p className="invited-board-link" onClick={() => handleBoardClick(board.id, board.title)}>{board.title}</p>
               </li>
             )
           })}

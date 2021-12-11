@@ -19,10 +19,15 @@ class Api::V1::BoardsController < ApplicationController
 
   def update
     @board = Board.find(params[:id])
-    if @board.update(board_params)
-      render json: @board
+    current_user_boards = current_user.boards
+    if current_user_boards.find_by(id: params[:id])
+      if @board.update(board_params)
+        render json: @board
+      else
+        render json: { errors: @board.errors.full_messages }
+      end
     else
-      render json: { errors: @board.errors.full_messages }
+      render json: { errors: 'Not the owner of the board' }
     end
   end
 
