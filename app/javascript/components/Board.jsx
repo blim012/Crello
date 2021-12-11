@@ -6,11 +6,11 @@ import ScrollContainer from 'react-indiana-drag-scroll'
 import Column from "./Column";
 import BoardColumns from "./BoardColumns";
 import consumer from "../channels/consumer";
+import EditForm from "./EditForm";
 
 const Board = (props) => {
   const [columns, setColumns] = useState([]);
   const [boardID, setBoardID] = useState(null);
-  const [boardTitle, setBoardTitle] = useState('');
   const [boardChannel, setBoardChannel] = useState(null);
   const [boardNotFound, setBoardNotFound] = useState(false);
 
@@ -26,7 +26,6 @@ const Board = (props) => {
         console.log(data);
         console.log(data.id);
         setColumns(data.ordered_columns);
-        setBoardTitle(data.title);
         setBoardID(data.id);
         setBoardNotFound(false);
       }
@@ -66,9 +65,9 @@ const Board = (props) => {
         className="scroll-container" 
         ignoreElements=".prevent-drag-scroll"
         hideScrollbars={false} >
-
+        <EditForm title={props.title} handleSubmit={props.handleBoardTitleChange} />
         <div id="board">
-          <h1 className="board-title">{boardTitle}</h1>
+          
           {boardID &&
             <BoardColumns boardID={boardID}>
               { columns.map((column) => {
@@ -81,5 +80,7 @@ const Board = (props) => {
     
   )
 };
+
+//<h1 className="board-title">{boardTitle}</h1>
 
 export default Board;
