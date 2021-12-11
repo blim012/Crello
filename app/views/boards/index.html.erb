@@ -1,1 +1,4 @@
 <%= javascript_pack_tag 'index' %>
+<div class="sign-out-button">
+  <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+</div>

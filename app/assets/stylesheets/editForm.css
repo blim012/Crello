@@ -1,5 +1,6 @@
 .edit-form-text {
   font-size: 1.1rem;
+  cursor: pointer;
 }
 
 .edit-form-buttons {
@@ -24,14 +25,21 @@
   margin-right: 5px;
 }
 
-.scroll-container > .edit-form-text {
+.scroll-container > .edit-form-text,
+#nav-header > .edit-form-text {
   font-size: 1.5rem;
   font-weight: 500;
   margin: 25px 0;
   margin-left: 50px;
 }
 
-.scroll-container > .edit-form {
+.scroll-container > .edit-form,
+#nav-header > .edit-form {
   margin: 25px 0;
   margin-left: 50px;
+}
+
+#nav-header .edit-form-buttons {
+  margin-left: 10px;
+  display: inline;
 }
