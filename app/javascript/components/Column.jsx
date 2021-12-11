@@ -47,7 +47,7 @@ const Column = (props) => {
       </div>
       <div className="column-tickets">
         { props.column.tickets.map((ticket) => {
-            return <Ticket key={uniqid('ticket-')} ticketID={ticket.id} desc={ticket.title} />
+            return <Ticket key={uniqid('ticket-')} ticketID={ticket.id} title={ticket.title} />
         })}
       </div>
       <AddForm subjectName='Ticket' handleSubmit={addTicket} />
