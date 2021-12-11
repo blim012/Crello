@@ -1,6 +1,15 @@
 class Api::V1::ColumnsController < ApplicationController
   protect_from_forgery
   
+  def update
+    @column = Column.find(params[:id])
+    if @column.update(column_params)
+      render json: @column
+    else
+      render json: { errors: @column.errors.full_messages }
+    end
+  end
+
   def create
     @column = Column.new(column_params)
     if @column.save
