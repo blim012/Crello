@@ -1,4 +1,15 @@
 .edit-form-text {
   font-size: 1.1rem;
-  display: inline;
+}
+
+.scroll-container > .edit-form-text {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin: 25px 0;
+  margin-left: 50px;
+}
+
+.scroll-container > .edit-form {
+  margin: 25px 0;
+  margin-left: 50px;
 }
