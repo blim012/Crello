@@ -71,13 +71,11 @@
 
 .ticket {
   display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
   background-color: #111315;
   margin-bottom: 0.5rem;
   border-radius: 5px;
-}
-
-.ticket-description {
-  flex-grow: 1;
 }
 
 .ticket:last-child {
