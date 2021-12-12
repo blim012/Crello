@@ -71,22 +71,35 @@
   color: #A1988C
 }
 
-.user-board-item {
+.board-item {
   display: flex;
   margin-right: 25px;
   margin-bottom: 5px;
 }
 
-.board-destroy {
+.board-item:hover {
+  color: white;
+}
+
+.board-destroy,
+.board-leave {
+  color: #C8C4BD;
   display: none;
   cursor: pointer;
 }
 
-.user-board-item:hover .board-destroy {
+.board-destroy:hover,
+.board-leave:hover {
+  color: white;
+}
+
+.board-item:hover .board-destroy,
+.board-item:hover .board-leave {
   display: block;
 }
 
-.user-board-link {
+.user-board-link,
+.invited-board-link {
   flex-grow: 1;
 }
 

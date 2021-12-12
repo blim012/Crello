@@ -44,7 +44,7 @@ const NavSidebar = (props) => {
         <ul id="user-boards">
           { userBoards.map((board) => {
             return (
-              <li className="user-board-item" key={uniqid('userBoard-')} >
+              <li className="board-item" key={uniqid('userBoard-')} >
                 <p className="user-board-link" onClick={() => handleBoardClick(board.id, board.title)}>{board.title}</p>
                 <div className="board-destroy" onClick={() => handleBoardDestroy(board.id)}>X</div>
               </li>
@@ -56,7 +56,7 @@ const NavSidebar = (props) => {
         <ul id="invited-boards">
           { invitedBoards.map((board) => {
             return (
-              <li className="invited-board-item" key={uniqid('invitedBoard-')} >
+              <li className="board-item" key={uniqid('invitedBoard-')} >
                 <p className="invited-board-link" onClick={() => handleBoardClick(board.id, board.title)}>{board.title}</p>
                 <div className="board-leave" onClick={() => handleBoardLeave(board.id)}>X</div>
               </li>
