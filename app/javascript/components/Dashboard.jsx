@@ -4,6 +4,7 @@ import axios from 'axios';
 import Board from './Board';
 import NavSidebar from './NavSidebar';
 import NavHeader from './NavHeader';
+import Home from './Home';
 
 const Dashboard = (props) => {
   const [selectedBoardID, setSelectedBoardID] = useState(-1);
@@ -122,7 +123,7 @@ const Dashboard = (props) => {
         <Board boardID={selectedBoardID} />
 
         :
-        <div>No Board Selected</div>
+        <Home />
       }
     </div>
   );

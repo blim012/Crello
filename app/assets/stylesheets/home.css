@@ -1,0 +1,47 @@
+#home {
+  margin-top: 75px;
+  margin-left: 50px;
+}
+
+.greeting-header {
+  font-size: 3rem;
+}
+
+.greeting {
+  font-size: 1.5rem;
+}
+
+@keyframes shake {
+  0% { transform: rotate(0deg); }
+  80% { transform: rotate(-5deg); }
+  90% { transform: rotate(5deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.arrow {
+  position: relative;
+  margin-top: 5rem;
+  width: 15rem;
+  height: 15rem;
+  border-right: 5px solid black;
+  border-bottom: 5px solid black;
+  border-bottom-right-radius: 90%;
+  animation: 0.8s shake 2
+}
+
+.arrow-tip {
+  position: absolute;
+  bottom: -1.5rem;
+  left: 0rem;
+  width: 3rem;
+  height: 3rem;
+  transform: rotate(135deg);
+  background: linear-gradient(-45deg, black 50%, transparent 50%);
+}
+
+#asdf {
+  animation-duration: 3s;
+  animation-name: slidein;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
