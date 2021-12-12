@@ -1,0 +1,16 @@
+.invite-button {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  text-decoration: none;
+  color: white;
+  padding: 0.5rem;
+  background-color: #023e8a;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.sent-invite {
+  background-color: #68B856 !important;
+}
