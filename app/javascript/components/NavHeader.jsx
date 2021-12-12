@@ -1,9 +1,10 @@
 import React from "react";
-import EditForm from "./EditForm";
 import axios from "axios";
+import EditForm from "./EditForm";
+import InviteForm from "./InviteForm";
 
 const NavHeader = (props) => {
-  const {title, handleBoardTitleChange} = props;
+  const {boardID, title, handleBoardTitleChange} = props;
   console.log(title);
   const handleSignOut = () => {
     axios.delete('/users/sign_out', {})
@@ -15,8 +16,11 @@ const NavHeader = (props) => {
   return (
     <nav id="nav-header">
       <EditForm title={title} handleSubmit={handleBoardTitleChange} />
+      {boardID >= 0 &&
+        <InviteForm boardID={boardID} />
+      }
     </nav>
   )
 };
-// <button className="sign-out-button" onClick={handleSignOut}>Sign Out</button>
+
 export default NavHeader;

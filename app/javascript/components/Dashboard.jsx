@@ -88,7 +88,7 @@ const Dashboard = (props) => {
 
   return (
     <div id="dashboard">
-      <NavHeader title={selectedBoardTitle} handleBoardTitleChange={handleBoardTitleChange} />
+      <NavHeader boardID={selectedBoardID} title={selectedBoardTitle} handleBoardTitleChange={handleBoardTitleChange} />
       <NavSidebar 
         userBoards={userBoards} 
         invitedBoards={invitedBoards} 
