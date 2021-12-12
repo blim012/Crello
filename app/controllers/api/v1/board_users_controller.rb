@@ -29,6 +29,7 @@ class Api::V1::BoardUsersController < ApplicationController
     user_id = current_user.id
     @board_user = BoardUser.find_by(user_id: user_id, board_id: params[:board_id])
     if @board_user
+      @board_user.delete
       render json: { message: 'Successfully left board' }
     else
       render json: { errors: 'Could not find board' }
