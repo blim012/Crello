@@ -12,6 +12,10 @@
   width: 100vw;
 }
 
+#nav-header > *:nth-child(n + 2) {
+  margin-left: 1rem;
+}
+
 .sign-out-button {
   z-index: 9999;
   position: fixed;

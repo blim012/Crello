@@ -14,3 +14,19 @@
 .sent-invite {
   background-color: #68B856 !important;
 }
+
+.invite-form-buttons {
+  margin-left: 10px;
+  display: inline;
+}
+
+.invite-form-buttons > * {
+  font-family: 'Roboto', sans-serif;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  background-color: #023e8a;
+  padding: 0.3rem;
+  margin-right: 5px;
+  cursor: pointer;
+}
