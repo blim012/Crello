@@ -10,6 +10,7 @@
   opacity: 50%;
   transform: translateX(-280px);
   transition: transform 0.15s ease-in-out, opacity 0.15s linear;
+  z-index: 9999;
 }
 
 #nav-boards {
