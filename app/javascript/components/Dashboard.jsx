@@ -86,6 +86,27 @@ const Dashboard = (props) => {
     });
   };
 
+  const handleBoardLeave = (boardID) => {
+    console.log(boardID);
+    axios.delete(`/api/v1/board_users/leave/${boardID}`, {})
+    .then((response) => {
+      let data = response.data;
+      if(data.hasOwnProperty('errors'))
+        return alert(`${data.errors}`)
+      let invitedBoardsCopy = [...invitedBoards];
+      for(let i = 0; i < invitedBoardsCopy.length; i++) {
+        if(invitedBoardsCopy[i].id === boardID) {
+          invitedBoardsCopy.splice(i, 1);
+          console.log(invitedBoardsCopy);
+          setInvitedBoards(invitedBoardsCopy);
+          setSelectedBoardID(-1);
+          setSelectedBoardTitle('');
+          return;
+        }
+      }
+    });
+  };
+
   return (
     <div id="dashboard">
       <NavHeader boardID={selectedBoardID} title={selectedBoardTitle} handleBoardTitleChange={handleBoardTitleChange} />
@@ -94,7 +115,8 @@ const Dashboard = (props) => {
         invitedBoards={invitedBoards} 
         handleBoardLink={handleBoardLink}
         handleBoardCreate={handleBoardCreate} 
-        handleBoardDestroy={handleBoardDestroy} />
+        handleBoardDestroy={handleBoardDestroy} 
+        handleBoardLeave={handleBoardLeave} />
       {selectedBoardID >= 0 
         ?
         <Board boardID={selectedBoardID} />

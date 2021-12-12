@@ -4,7 +4,13 @@ import uniqid from 'uniqid';
 import AddForm from "./AddForm";
 
 const NavSidebar = (props) => {
-  const { userBoards, invitedBoards, handleBoardLink, handleBoardCreate, handleBoardDestroy } = props;
+  const { userBoards, 
+          invitedBoards, 
+          handleBoardLink, 
+          handleBoardCreate, 
+          handleBoardDestroy, 
+          handleBoardLeave} 
+          = props;
   const navElement = useRef(); 
   const navOpenElement = useRef();
   const navPeekElement = useRef();
@@ -52,6 +58,7 @@ const NavSidebar = (props) => {
             return (
               <li className="invited-board-item" key={uniqid('invitedBoard-')} >
                 <p className="invited-board-link" onClick={() => handleBoardClick(board.id, board.title)}>{board.title}</p>
+                <div className="board-leave" onClick={() => handleBoardLeave(board.id)}>X</div>
               </li>
             )
           })}
