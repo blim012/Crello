@@ -6,11 +6,15 @@ class Api::V1::BoardUsersController < ApplicationController
     user = User.find_by(email: params[:email])
     board = Board.find_by(id: params[:board_id])
     if user && board
-      @board_user = BoardUser.new(user_id: user.id, board_id: board.id)
-      if @board_user.save
-        render json: @board_user
-      else
-        render json: { errors: @board_user.errors.full_messages }
+      begin
+        @board_user = BoardUser.new(user_id: user.id, board_id: board.id)
+        if @board_user.save
+          render json: @board_user
+        else
+          render json: { errors: @board_user.errors.full_messages }
+        end
+      rescue ActiveRecord::RecordNotUnique
+        render json: { errors: 'User has already been invited to the board' }
       end
     else
       unless user
