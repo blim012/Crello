@@ -33,7 +33,7 @@ const AddForm = (props) => {
             onChange={handleChange} 
             required />
           <div className="add-form-buttons">
-            <input type="submit" className="add-form-submit" value={`Add ${subjectName}`} />
+            <input type="submit" className="add-form-submit button" value={`Add ${subjectName}`} />
             <div className="add-form-cancel" onClick={toggleForm}>X</div>
           </div>
         </form>

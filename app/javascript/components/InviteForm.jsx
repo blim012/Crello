@@ -31,7 +31,7 @@ const InviteForm = (props) => {
   };
 
   const setInviteButtonClass = () => {
-    let className = 'invite-button';
+    let className = 'invite-button button';
     if(sentInvite) className += ' sent-invite';
     return className;
   };
@@ -58,8 +58,8 @@ const InviteForm = (props) => {
             onChange={handleChange}
             required />
           <div className="invite-form-buttons">
-            <input type="submit" className="invite-form-submit" value="Invite" />
-            <button className="invite-form-cancel" onClick={toggleForm}>Cancel</button>
+            <input type="submit" className="invite-form-submit button" value="Invite" />
+            <button className="invite-form-cancel button" onClick={toggleForm}>Cancel</button>
           </div>
         </form>
 

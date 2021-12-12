@@ -39,8 +39,8 @@ const EditForm = (props) => {
             onFocus={highlightInput}
             required />
           <div className="edit-form-buttons">
-            <input type="submit" className="edit-form-submit" value={'Edit'} />
-            <button className="edit-form-cancel" onClick={toggleForm}>Cancel</button>
+            <input type="submit" className="edit-form-submit button" value={'Edit'} />
+            <button className="edit-form-cancel button" onClick={toggleForm}>Cancel</button>
           </div>
         </form>
 

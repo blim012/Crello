@@ -1,14 +1,7 @@
 .invite-button {
-  font-family: 'Roboto', sans-serif;
   font-size: 1rem;
   font-weight: 400;
-  text-decoration: none;
-  color: white;
   padding: 0.5rem;
-  background-color: #023e8a;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
 }
 
 .sent-invite {
@@ -21,12 +14,6 @@
 }
 
 .invite-form-buttons > * {
-  font-family: 'Roboto', sans-serif;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  background-color: #023e8a;
   padding: 0.3rem;
   margin-right: 5px;
-  cursor: pointer;
 }

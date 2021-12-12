@@ -40,17 +40,8 @@
 }
 
 .add-form-submit {
-  font-family: 'Roboto', sans-serif;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  background-color: #023e8a;
   padding: 0.5rem;
   margin-right: 10px;
-}
-
-.add-form-submit:hover {
-  cursor: pointer;
 }
 
 #nav-boards > .add-form-container {

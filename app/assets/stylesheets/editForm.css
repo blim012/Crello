@@ -8,17 +8,8 @@
 }
 
 .edit-form-buttons > * {
-  font-family: 'Roboto', sans-serif;
   font-size: 0.8rem;
-  color: white;
   padding: 0.3rem;
-  border: none;
-  border-radius: 5px;
-  background-color: #023e8a;
-}
-
-.edit-form-buttons > *:hover {
-  cursor: pointer;
 }
 
 .edit-form-submit {
