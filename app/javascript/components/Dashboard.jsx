@@ -70,42 +70,45 @@ const Dashboard = (props) => {
   }
 
   const handleBoardDestroy = (boardID) => {
-    axios.delete(`/api/v1/boards/${boardID}`, {})
-    .then((response) => {
-      let data = response.data;
-      if(data.hasOwnProperty('errors')) 
-        return alert('Cannot delete. Only the board owner may delete a board');
-      let userBoardsCopy = [...userBoards];
-      for(let i = 0; i < userBoardsCopy.length; i++) {
-        if(userBoardsCopy[i].id === boardID) {
-          userBoardsCopy.splice(i, 1);
-          console.log(userBoardsCopy);
-          setUserBoards(userBoardsCopy);
-          return;
+    if(confirm('Delete Board?')) {
+      axios.delete(`/api/v1/boards/${boardID}`, {})
+      .then((response) => {
+        let data = response.data;
+        if(data.hasOwnProperty('errors')) 
+          return alert('Cannot delete. Only the board owner may delete a board');
+        let userBoardsCopy = [...userBoards];
+        for(let i = 0; i < userBoardsCopy.length; i++) {
+          if(userBoardsCopy[i].id === boardID) {
+            userBoardsCopy.splice(i, 1);
+            console.log(userBoardsCopy);
+            setUserBoards(userBoardsCopy);
+            return;
+          }
         }
-      }
-    });
+      });
+    }
   };
 
   const handleBoardLeave = (boardID) => {
-    console.log(boardID);
-    axios.delete(`/api/v1/board_users/leave/${boardID}`, {})
-    .then((response) => {
-      let data = response.data;
-      if(data.hasOwnProperty('errors'))
-        return alert(`${data.errors}`)
-      let invitedBoardsCopy = [...invitedBoards];
-      for(let i = 0; i < invitedBoardsCopy.length; i++) {
-        if(invitedBoardsCopy[i].id === boardID) {
-          invitedBoardsCopy.splice(i, 1);
-          console.log(invitedBoardsCopy);
-          setInvitedBoards(invitedBoardsCopy);
-          setSelectedBoardID(-1);
-          setSelectedBoardTitle('');
-          return;
+    if(confirm('Leave board?')) {
+      axios.delete(`/api/v1/board_users/leave/${boardID}`, {})
+      .then((response) => {
+        let data = response.data;
+        if(data.hasOwnProperty('errors'))
+          return alert(`${data.errors}`)
+        let invitedBoardsCopy = [...invitedBoards];
+        for(let i = 0; i < invitedBoardsCopy.length; i++) {
+          if(invitedBoardsCopy[i].id === boardID) {
+            invitedBoardsCopy.splice(i, 1);
+            console.log(invitedBoardsCopy);
+            setInvitedBoards(invitedBoardsCopy);
+            setSelectedBoardID(-1);
+            setSelectedBoardTitle('');
+            return;
+          }
         }
-      }
-    });
+      });
+    }
   };
 
   return (

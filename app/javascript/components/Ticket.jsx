@@ -7,7 +7,7 @@ const Ticket = (props) => {
   const [ticketTitle, setTicketTitle] = useState(props.title);
 
   const handleTicketDestroy = (e) => {
-    axios.delete(`/api/v1/tickets/${props.ticketID}`, {});
+    if(confirm('Delete Ticket?')) axios.delete(`/api/v1/tickets/${props.ticketID}`, {});
   };
 
   const handleTicketTitleChange = (title) => {
@@ -27,7 +27,5 @@ const Ticket = (props) => {
     </div>
   );
 };
-
-//      <p className="ticket-description">{ props.desc }</p>
 
 export default Ticket;

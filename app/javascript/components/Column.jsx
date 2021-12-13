@@ -24,7 +24,7 @@ const Column = (props) => {
   };
 
   const handleColumnDestroy = () => {
-    axios.delete(`/api/v1/columns/${props.column.id}`, {});
+    if(confirm('Delete Column?')) axios.delete(`/api/v1/columns/${props.column.id}`, {});
   };
 
   const handleColumnTitleChange = (title) => {
@@ -53,7 +53,5 @@ const Column = (props) => {
     </div>
   );
 };
-
-//<p className="column-title">{props.column.title}</p>
 
 export default Column;
