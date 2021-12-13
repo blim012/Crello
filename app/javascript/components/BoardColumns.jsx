@@ -127,7 +127,7 @@ const BoardColumns = (props) => {
       <div className="board-columns">
         { props.children }
       </div>
-      <AddForm subjectName="Column" handleSubmit={addColumn} />
+      <AddForm subjectName="Column" handleSubmit={addColumn} maxLength={256} />
     </div>
   );
 }

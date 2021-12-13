@@ -49,7 +49,7 @@ const Column = (props) => {
             return <Ticket key={uniqid('ticket-')} ticketID={ticket.id} title={ticket.title} />
         })}
       </div>
-      <AddForm subjectName='Ticket' handleSubmit={addTicket} />
+      <AddForm subjectName='Ticket' handleSubmit={addTicket} maxLength={512} />
     </div>
   );
 };

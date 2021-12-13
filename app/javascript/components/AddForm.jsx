@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 
 const AddForm = (props) => {
-  const {subjectName, handleSubmit} = props;
+  const {subjectName, handleSubmit, maxLength} = props;
   const [formOpen, setFormOpen] = useState(false);
   const [textValue, setTextValue] = useState('');
 
@@ -31,6 +31,7 @@ const AddForm = (props) => {
             placeholder={`Enter ${subjectName} title...`} 
             value={textValue} 
             onChange={handleChange} 
+            maxLength={maxLength}
             required />
           <div className="add-form-buttons">
             <input type="submit" className="add-form-submit button" value={`Add ${subjectName}`} />

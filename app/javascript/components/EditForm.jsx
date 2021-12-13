@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 
 const EditForm = (props) => {
-  const {title, handleSubmit} = props;
+  const {title, handleSubmit, maxLength} = props;
   const [formOpen, setFormOpen] = useState(false);
   const [textValue, setTextValue] = useState(title);
 

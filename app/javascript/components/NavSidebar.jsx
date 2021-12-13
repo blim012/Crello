@@ -51,7 +51,7 @@ const NavSidebar = (props) => {
             )
           })}
         </ul>
-        <AddForm subjectName="Board" handleSubmit={handleBoardCreate} />
+        <AddForm subjectName="Board" handleSubmit={handleBoardCreate} maxLength={80} />
         <h2 className="nav-board-header">Boards Shared with You:</h2>
         <ul id="invited-boards">
           { invitedBoards.map((board) => {
