@@ -1,4 +1,4 @@
 class BoardUser < ApplicationRecord
-  belongs_to :user;
-  belongs_to :board;
+  belongs_to :user, required: true;
+  belongs_to :board, required: true;
 end
