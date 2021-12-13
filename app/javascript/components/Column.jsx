@@ -41,7 +41,7 @@ const Column = (props) => {
   return (
     <div className='column' ref={columnElement}>
       <div className="handle column-item prevent-drag-scroll">
-        <EditForm title={boardTitle} handleSubmit={handleColumnTitleChange} />
+        <EditForm title={boardTitle} handleSubmit={handleColumnTitleChange} maxLength={256} />
         <div className="column-destroy" onClick={handleColumnDestroy}>X</div>
       </div>
       <div className="column-tickets">

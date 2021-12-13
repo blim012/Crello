@@ -37,6 +37,7 @@ const EditForm = (props) => {
             onChange={handleChange}
             autoFocus={true}
             onFocus={highlightInput}
+            maxLength={maxLength}
             required />
           <div className="edit-form-buttons">
             <input type="submit" className="edit-form-submit button" value={'Edit'} />

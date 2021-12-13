@@ -15,7 +15,7 @@ const NavHeader = (props) => {
 
   return (
     <nav id="nav-header">
-      <EditForm title={title} handleSubmit={handleBoardTitleChange} />
+      <EditForm title={title} handleSubmit={handleBoardTitleChange} maxLength={80} />
       {boardID >= 0 &&
         <InviteForm boardID={boardID} />
       }

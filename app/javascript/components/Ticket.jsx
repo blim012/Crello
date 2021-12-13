@@ -22,7 +22,7 @@ const Ticket = (props) => {
 
   return (
     <div className="ticket column-item prevent-drag-scroll">
-      <EditForm title={ticketTitle} handleSubmit={handleTicketTitleChange} />
+      <EditForm title={ticketTitle} handleSubmit={handleTicketTitleChange} maxLength={512} />
       <div className="ticket-destroy" onClick={handleTicketDestroy}>X</div>
     </div>
   );
