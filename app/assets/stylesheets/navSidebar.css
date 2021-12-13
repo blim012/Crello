@@ -95,6 +95,7 @@
 
 .board-item:hover .board-destroy,
 .board-item:hover .board-leave {
+  margin-left: 10px;
   display: block;
 }
 
@@ -106,7 +107,7 @@
 #user-boards, 
 #invited-boards {
   overflow-x: hidden;
-  word-break: break-all;
+  word-break: break-word;
 }
 
 .user-board-link:hover,
