@@ -1,11 +1,29 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 
 const InviteForm = (props) => {
   const [formOpen, setFormOpen] = useState('');
   const [emailValue, setEmailValue] = useState('');
   const [sentInvite, setSentInvite] = useState(false);
+
+  useEffect(() => {
+    const handleWindowClick = (e) => {
+      if(e.target.classList.contains('invite-form')) return;
+      if(e.target.parentElement && 
+        (e.target.parentElement.classList.contains('invite-form') || 
+         e.target.parentElement.classList.contains('invite-form-buttons'))) return;
+      toggleForm();
+    };
+
+    if(formOpen) {
+      window.addEventListener('click', handleWindowClick);
+    } else {
+      window.removeEventListener('click', handleWindowClick);
+    }
+
+    return () => window.removeEventListener('click', handleWindowClick);
+  }, [formOpen])
 
   const toggleForm = () => { 
     setEmailValue('');

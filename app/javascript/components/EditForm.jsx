@@ -1,10 +1,28 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const EditForm = (props) => {
   const {title, handleSubmit, maxLength} = props;
   const [formOpen, setFormOpen] = useState(false);
   const [textValue, setTextValue] = useState(title);
+
+  useEffect(() => {
+    const handleWindowClick = (e) => {
+      if(e.target.classList.contains('edit-form')) return;
+      if(e.target.parentElement && 
+        (e.target.parentElement.classList.contains('edit-form') || 
+         e.target.parentElement.classList.contains('edit-form-buttons'))) return;
+      toggleForm();
+    };
+
+    if(formOpen) {
+      window.addEventListener('click', handleWindowClick);
+    } else {
+      window.removeEventListener('click', handleWindowClick);
+    }
+
+    return () => window.removeEventListener('click', handleWindowClick);
+  }, [formOpen])
 
   const toggleForm = () => {
     setTextValue(title);
