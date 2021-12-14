@@ -27,7 +27,6 @@ body {
   background: linear-gradient(135deg, hsla(18, 76%, 85%, 1) 4%, hsla(203, 69%, 84%, 1) 100%);
   background: -moz-linear-gradient(135deg, hsla(18, 76%, 85%, 1) 4%, hsla(203, 69%, 84%, 1) 100%);
   background: -webkit-linear-gradient(135deg, hsla(18, 76%, 85%, 1) 4%, hsla(203, 69%, 84%, 1) 100%);
-  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#f6cfbe", endColorstr="#b9dcf2", GradientType=1 );
   background-repeat: no-repeat;
   background-attachment: fixed;
   font-family: 'Roboto', sans-serif;
