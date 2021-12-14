@@ -121,3 +121,8 @@
   opacity: 100% !important;
   background-color: rgba(33, 37, 41, 98%) !important;
 }
+
+.empty-invited-boards {
+  font-style: italic;
+  margin-left: 1rem;
+}

@@ -53,16 +53,22 @@ const NavSidebar = (props) => {
         </ul>
         <AddForm subjectName="Board" handleSubmit={handleBoardCreate} maxLength={80} />
         <h2 className="nav-board-header">Boards Shared with You:</h2>
-        <ul id="invited-boards">
-          { invitedBoards.map((board) => {
-            return (
-              <li className="board-item" key={uniqid('invitedBoard-')} >
-                <p className="invited-board-link" onClick={() => handleBoardClick(board.id, board.title)}>{board.title}</p>
-                <div className="board-leave" onClick={() => handleBoardLeave(board.id)}>X</div>
-              </li>
-            )
-          })}
-        </ul>
+        {invitedBoards.length === 0
+          ?
+          <p className="empty-invited-boards">You have none...</p>
+
+          :
+          <ul id="invited-boards">
+            { invitedBoards.map((board) => {
+              return (
+                <li className="board-item" key={uniqid('invitedBoard-')} >
+                  <p className="invited-board-link" onClick={() => handleBoardClick(board.id, board.title)}>{board.title}</p>
+                  <div className="board-leave" onClick={() => handleBoardLeave(board.id)}>X</div>
+                </li>
+              )
+            })}
+          </ul>
+        }
       </div>
     </nav>
   );
