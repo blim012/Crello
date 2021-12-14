@@ -17,13 +17,10 @@ const Board = (props) => {
     axios.get(`/api/v1/boards/${props.boardID}`)
     .then((response) => {
       let data = response.data;
-      console.log(response);
       if(data.hasOwnProperty('no_board_found')) {
         setBoardNotFound(true);
       }
       else {
-        console.log(data);
-        console.log(data.id);
         setColumns(data.ordered_columns);
         setBoardID(data.id);
         setBoardNotFound(false);
@@ -37,12 +34,10 @@ const Board = (props) => {
       const boardChannelToSet = consumer.subscriptions.create({ channel: 'BoardsChannel', board_id: `${boardID}`}, {
         connected() {
           // Called when the subscription is ready for use on the server
-          console.log(`Connect to board ${boardID}`);
         },
       
         disconnected() {
           // Called when the subscription has been terminated by the server
-          console.log(`Disconnected from board ${boardID}`);
         },
       
         received(data) {

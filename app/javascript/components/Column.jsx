@@ -12,15 +12,11 @@ const Column = (props) => {
 
   const addTicket = (title) => {
     const columnTicketsLength = columnElement.current.querySelector('.column-tickets').children.length;
-    console.log(columnTicketsLength);
     axios.post('/api/v1/tickets', {
       column_id: props.column.id,
       order: columnTicketsLength,
       title: title
-    })
-    .then((response) => {
-      console.log(response);
-    })
+    });
   };
 
   const handleColumnDestroy = () => {

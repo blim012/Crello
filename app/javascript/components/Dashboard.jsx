@@ -31,7 +31,6 @@ const Dashboard = (props) => {
   }, []);
 
   const handleBoardLink = (boardID, boardTitle) => {
-    console.log(boardID);
     setSelectedBoardTitle(boardTitle);
     setSelectedBoardID(boardID);
   };
@@ -41,7 +40,6 @@ const Dashboard = (props) => {
       title: title
     })
     .then((response) => {
-      console.log(response);
       let data = response.data;
       if(data.hasOwnProperty('errors')) 
         return alert('Cannot rename. Only the board owner may rename their board');
@@ -80,7 +78,6 @@ const Dashboard = (props) => {
         for(let i = 0; i < userBoardsCopy.length; i++) {
           if(userBoardsCopy[i].id === boardID) {
             userBoardsCopy.splice(i, 1);
-            console.log(userBoardsCopy);
             setUserBoards(userBoardsCopy);
             return;
           }
@@ -100,7 +97,6 @@ const Dashboard = (props) => {
         for(let i = 0; i < invitedBoardsCopy.length; i++) {
           if(invitedBoardsCopy[i].id === boardID) {
             invitedBoardsCopy.splice(i, 1);
-            console.log(invitedBoardsCopy);
             setInvitedBoards(invitedBoardsCopy);
             setSelectedBoardID(-1);
             setSelectedBoardTitle('');
