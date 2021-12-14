@@ -1,3 +1,10 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.3.6,
+* Autoprefixer: v10.3.1
+* Browsers: last 4 version
+*/
+
 #home {
   margin-top: 75px;
   margin-left: 50px;
@@ -11,11 +18,18 @@
   font-size: 1.5rem;
 }
 
+@-webkit-keyframes shake {
+  0% { -webkit-transform: rotate(0deg); transform: rotate(0deg); }
+  80% { -webkit-transform: rotate(-5deg); transform: rotate(-5deg); }
+  90% { -webkit-transform: rotate(5deg); transform: rotate(5deg); }
+  100% { -webkit-transform: rotate(0deg); transform: rotate(0deg); }
+}
+
 @keyframes shake {
-  0% { transform: rotate(0deg); }
-  80% { transform: rotate(-5deg); }
-  90% { transform: rotate(5deg); }
-  100% { transform: rotate(0deg); }
+  0% { -webkit-transform: rotate(0deg); transform: rotate(0deg); }
+  80% { -webkit-transform: rotate(-5deg); transform: rotate(-5deg); }
+  90% { -webkit-transform: rotate(5deg); transform: rotate(5deg); }
+  100% { -webkit-transform: rotate(0deg); transform: rotate(0deg); }
 }
 
 .arrow {
@@ -26,7 +40,8 @@
   border-right: 5px solid black;
   border-bottom: 5px solid black;
   border-bottom-right-radius: 90%;
-  animation: 0.8s shake 2
+  -webkit-animation: 0.8s shake 2;
+          animation: 0.8s shake 2
 }
 
 .arrow-tip {
@@ -35,13 +50,20 @@
   left: 0rem;
   width: 3rem;
   height: 3rem;
-  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+      -ms-transform: rotate(135deg);
+          transform: rotate(135deg);
+  background: -o-linear-gradient(135deg, black 50%, transparent 50%);
   background: linear-gradient(-45deg, black 50%, transparent 50%);
 }
 
 #asdf {
-  animation-duration: 3s;
-  animation-name: slidein;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
+  -webkit-animation-duration: 3s;
+          animation-duration: 3s;
+  -webkit-animation-name: slidein;
+          animation-name: slidein;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-direction: alternate;
+          animation-direction: alternate;
 }

@@ -1,3 +1,10 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.3.6,
+* Autoprefixer: v10.3.1
+* Browsers: last 4 version
+*/
+
 #nav-sidebar {
   position: fixed;
   padding: 10px;
@@ -8,8 +15,14 @@
   background-color: #212529;
   color: #C8C4BD;
   opacity: 50%;
-  transform: translateX(-280px);
+  -webkit-transform: translateX(-280px);
+      -ms-transform: translateX(-280px);
+          transform: translateX(-280px);
+  -webkit-transition: opacity 0.15s linear, -webkit-transform 0.15s ease-in-out;
+  transition: opacity 0.15s linear, -webkit-transform 0.15s ease-in-out;
+  -o-transition: transform 0.15s ease-in-out, opacity 0.15s linear;
   transition: transform 0.15s ease-in-out, opacity 0.15s linear;
+  transition: transform 0.15s ease-in-out, opacity 0.15s linear, -webkit-transform 0.15s ease-in-out;
   z-index: 9999;
 }
 
@@ -21,9 +34,15 @@
 }
 
 #nav-toggle-outer {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   position: absolute;
   top: 50px;
   right: -25px;
@@ -31,6 +50,8 @@
   height: 30px;
   border-radius: 50%;
   background-color: rgba(0, 0, 0, 50%);
+  -webkit-transition: background-color 0.15s linear;
+  -o-transition: background-color 0.15s linear;
   transition: background-color 0.15s linear;
   cursor: pointer;
 }
@@ -72,6 +93,8 @@
 }
 
 .board-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   margin-right: 25px;
   margin-bottom: 5px;
@@ -101,7 +124,9 @@
 
 .user-board-link,
 .invited-board-link {
-  flex-grow: 1;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
 }
 
 #user-boards, 
@@ -117,7 +142,9 @@
 }
 
 .nav-sidebar-open {
-  transform: translateX(0) !important;
+  -webkit-transform: translateX(0) !important;
+      -ms-transform: translateX(0) !important;
+          transform: translateX(0) !important;
   opacity: 100% !important;
   background-color: rgba(33, 37, 41, 98%) !important;
 }
