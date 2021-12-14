@@ -24,6 +24,12 @@
   margin-left: 50px;
 }
 
+#nav-header > .edit-form-text {
+  word-break: break-word;
+  max-height: 3rem;
+  overflow-y: auto;
+}
+
 .scroll-container > .edit-form,
 #nav-header > .edit-form {
   margin: 25px 0;
