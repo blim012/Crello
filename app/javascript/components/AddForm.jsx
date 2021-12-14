@@ -1,10 +1,28 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const AddForm = (props) => {
   const {subjectName, handleSubmit, maxLength} = props;
   const [formOpen, setFormOpen] = useState(false);
   const [textValue, setTextValue] = useState('');
+
+  useEffect(() => {
+    const handleWindowClick = (e) => {
+      if(e.target.classList.contains('add-form')) return;
+      if(e.target.parentElement && 
+        (e.target.parentElement.classList.contains('add-form') || 
+         e.target.parentElement.classList.contains('add-form-buttons'))) return;
+      toggleForm();
+    };
+
+    if(formOpen) {
+      window.addEventListener('click', handleWindowClick);
+    } else {
+      window.removeEventListener('click', handleWindowClick);
+    }
+
+    return () => window.removeEventListener('click', handleWindowClick);
+  }, [formOpen])
 
   const toggleForm = () => {
     setTextValue('');
