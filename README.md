@@ -14,3 +14,5 @@ Horizontal scrolling via mouse drag was implemented using [react-indiana-drag-sc
 Draggable tickets and columns was implemented using [Dragula](https://github.com/bevacqua/dragula)
 
 Tested using RSpec and [shoulda-matchers](https://github.com/thoughtbot/shoulda-matchers)
+
+[Try it here](https://crello-kanban.herokuapp.com)
